@@ -1,6 +1,7 @@
 package com.atoudeft.controleur;
 
 import com.atoudeft.client.Client;
+import com.atoudeft.vue.PanneauConfigServeur;
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,7 +52,9 @@ public class EcouteurMenuPrincipal implements ActionListener {
                     }
                     break;
                 case "CONFIGURER":
-                    //TODO : compléter (question 1.3)
+                    PanneauConfigServeur panneau = new PanneauConfigServeur(client.getAdrServeur(),
+                            client.getPortServeur());
+                    JOptionPane.showConfirmDialog(fenetre, panneau, "Configuration Serveur", JOptionPane.YES_NO_OPTION);
                     break;
                 case "QUITTER":
                     if (client.isConnecte()) {

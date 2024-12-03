@@ -1,6 +1,9 @@
 package com.atoudeft.vue;
 
 import javax.swing.*;
+
+import javafx.css.ParsedValue;
+
 import java.awt.*;
 
 /**
@@ -10,10 +13,11 @@ import java.awt.*;
  * @since 2023-11-01
  */
 public class PanneauConfigServeur extends JPanel {
-    private JTextField txtAdrServeur, txtNumPort;
+    private JTextField txtAdrServeur, txtNumPort = new JTextField();
 
     public PanneauConfigServeur(String adr, int port) {
-        //à compléter
+        this.txtAdrServeur.setText(adr);
+        this.txtNumPort.setText(String.valueOf(port));
     }
     public String getAdresseServeur() {
         return txtAdrServeur.getText();
