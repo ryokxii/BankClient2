@@ -3,6 +3,7 @@ package com.atoudeft.vue;
 import com.atoudeft.client.Client;
 import com.atoudeft.controleur.EcouteurConnexion;
 import com.atoudeft.controleur.EcouteurListeComptes;
+import com.atoudeft.controleur.EcouteurOperationsCompte;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,6 +42,7 @@ public class PanneauPrincipal  extends JPanel {
         panneauCompteClient.setLayout(new BorderLayout());
         panneauCompteClient.setBackground(Color.WHITE);
         panneauOperationsCompte.setBackground(Color.WHITE);
+        panneauOperationsCompte.setEcouteur(new EcouteurOperationsCompte(client)); // Question 2.1-1
 
         numerosComptes = new DefaultListModel<>();
 

@@ -51,11 +51,37 @@ public class EcouteurMenuPrincipal implements ActionListener {
                         client.deconnecter();
                     }
                     break;
+
                 case "CONFIGURER":
-                    PanneauConfigServeur panneau = new PanneauConfigServeur(client.getAdrServeur(),
-                            client.getPortServeur());
-                    JOptionPane.showConfirmDialog(fenetre, panneau, "Configuration Serveur", JOptionPane.YES_NO_OPTION);
+                    // if (!client.isConnecte()) {
+                    //     boolean config = true;
+
+                    //     PanneauConfigServeur configurationPanel = new PanneauConfigServeur(client.getAdrServeur(),
+                    //             client.getPortServeur());
+                    //     while (config) {
+                    //         try {
+                    //             fenetre.add(configurationPanel);
+                    //             res = JOptionPane.showConfirmDialog(fenetre, configurationPanel,
+                    //                     "Configuration serveur", JOptionPane.OK_CANCEL_OPTION,
+                    //                     JOptionPane.PLAIN_MESSAGE);
+                    //             if (res == JOptionPane.OK_OPTION) {
+                    //                 String newAdr = configurationPanel.getAdresseServeur();
+                    //                 client.setAdrServeur(newAdr);
+                    //                 int newPort = Integer.parseInt(configurationPanel.getPortServeur());
+                    //                 client.setPortServeur(newPort);
+                    //                 config = false;
+                    //             } else if (res == JOptionPane.CANCEL_OPTION) {
+                    //                 break;
+                    //             }
+
+                    //         } catch (NumberFormatException e) {
+                    //             JOptionPane.showMessageDialog(fenetre, "Le numéro de port saisi n’est pas un entier");
+                    //         }
+                    //     }
+                    // }
+                    
                     break;
+
                 case "QUITTER":
                     if (client.isConnecte()) {
                         res = JOptionPane.showConfirmDialog(fenetre, "Vous allez vous déconnecter",

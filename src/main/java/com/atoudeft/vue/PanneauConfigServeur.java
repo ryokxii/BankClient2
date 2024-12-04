@@ -13,7 +13,7 @@ import java.awt.*;
  * @since 2023-11-01
  */
 public class PanneauConfigServeur extends JPanel {
-    private JTextField txtAdrServeur, txtNumPort = new JTextField();
+    private JTextField txtAdrServeur, txtNumPort = new JTextField(30);
 
     public PanneauConfigServeur(String adr, int port) {
         this.txtAdrServeur.setText(adr);

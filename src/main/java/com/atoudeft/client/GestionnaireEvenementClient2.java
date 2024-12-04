@@ -80,10 +80,16 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     }
                     break;
                 /******************* SÉLECTION DE COMPTES *******************/
-                case "EPARGNE" :
-                    arg = evenement.getArgument();
-                    JOptionPane.showMessageDialog(panneauPrincipal,"EPARGNE "+arg);
-                    break;
+                case "EPARGNE" : // Question 2.1-3
+                    try {
+                        arg = evenement.getArgument();
+                        JOptionPane.showMessageDialog(panneauPrincipal, "EPARGNE " + arg);
+                        panneauPrincipal.ajouterCompte(arg);
+                        break;
+
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(panneauPrincipal, e);
+                    }
                 case "SELECT" :
                     arg = evenement.getArgument();
                     JOptionPane.showMessageDialog(panneauPrincipal,"SELECT "+arg);
