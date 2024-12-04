@@ -92,7 +92,11 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     }
                 case "SELECT" :
                     arg = evenement.getArgument();
-                    JOptionPane.showMessageDialog(panneauPrincipal,"SELECT "+arg);
+                    // PRENDRE SEULEMENT LE SOLDE
+                    String[] partie = arg.split(" ");
+                    String solde = partie[partie.length - 1];
+                    // METTRE LE SOLDE DANS LE LABEL
+                    panneauPrincipal.getPanneauOperationsCompte().afficherSolde(solde);
                     break;
 
                 /******************* OPÉRATIONS BANCAIRES *******************/

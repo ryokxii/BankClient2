@@ -1,6 +1,7 @@
 package com.atoudeft.controleur;
 
 import com.atoudeft.client.Client;
+import com.atoudeft.vue.PanneauOperationsCompte;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -15,12 +16,30 @@ import java.awt.event.MouseEvent;
 public class EcouteurListeComptes extends MouseAdapter {
 
     private Client client;
+
     public EcouteurListeComptes(Client client) {
         this.client = client;
     }
 
     @Override
     public void mouseClicked(MouseEvent evt) {
-        //à compléter
+        if (evt.getClickCount() == 2) {
+            JList<String> listeComptes = (JList<String>) evt.getSource();
+            String compteSelectionne = listeComptes.getSelectedValue();
+
+            if (compteSelectionne != null) {
+                //PREND CE QU'IL Y A ENTRE CROCHETS
+                String typeCompte = compteSelectionne.substring(
+                        compteSelectionne.indexOf('[') + 1,
+                        compteSelectionne.indexOf(']'));
+
+                // LE TYPE
+                if ("CHEQUE".equalsIgnoreCase(typeCompte)) {
+                    client.envoyer("SELECT cheque");
+                } else if ("EPARGNE".equalsIgnoreCase(typeCompte)) {
+                    client.envoyer("SELECT epargne");
+                }
+            }
+        }
     }
 }

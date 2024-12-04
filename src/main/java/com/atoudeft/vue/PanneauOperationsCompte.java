@@ -42,4 +42,7 @@ public class PanneauOperationsCompte extends JPanel {
         bFacture.addActionListener(ecouteur);
         bHistorique.addActionListener(ecouteur);
     }
+    public void afficherSolde(String solde) {
+        lblSolde.setText("Solde : " + solde + " $");
+    }
 }
