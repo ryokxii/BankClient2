@@ -53,32 +53,36 @@ public class EcouteurMenuPrincipal implements ActionListener {
                     break;
 
                 case "CONFIGURER":
-                    // if (!client.isConnecte()) {
-                    //     boolean config = true;
+                     if (!client.isConnecte()) {
+                         boolean config = true;
 
-                    //     PanneauConfigServeur configurationPanel = new PanneauConfigServeur(client.getAdrServeur(),
-                    //             client.getPortServeur());
-                    //     while (config) {
-                    //         try {
-                    //             fenetre.add(configurationPanel);
-                    //             res = JOptionPane.showConfirmDialog(fenetre, configurationPanel,
-                    //                     "Configuration serveur", JOptionPane.OK_CANCEL_OPTION,
-                    //                     JOptionPane.PLAIN_MESSAGE);
-                    //             if (res == JOptionPane.OK_OPTION) {
-                    //                 String newAdr = configurationPanel.getAdresseServeur();
-                    //                 client.setAdrServeur(newAdr);
-                    //                 int newPort = Integer.parseInt(configurationPanel.getPortServeur());
-                    //                 client.setPortServeur(newPort);
-                    //                 config = false;
-                    //             } else if (res == JOptionPane.CANCEL_OPTION) {
-                    //                 break;
-                    //             }
+                         PanneauConfigServeur panneau = new PanneauConfigServeur(client.getAdrServeur(), client.getPortServeur());
 
-                    //         } catch (NumberFormatException e) {
-                    //             JOptionPane.showMessageDialog(fenetre, "Le numéro de port saisi n’est pas un entier");
-                    //         }
-                    //     }
-                    // }
+                         while (config) {
+                             try {
+                                 fenetre.add(panneau);
+                                 res = JOptionPane.showConfirmDialog(fenetre, panneau,
+                                         "Configuration serveur", JOptionPane.OK_CANCEL_OPTION,
+                                         JOptionPane.PLAIN_MESSAGE);
+                                 if (res == JOptionPane.OK_OPTION) {
+                                     //SI L'UTILISATEUR MARQUE DE NOUVELLES VALEURS
+                                     String newAdr = panneau.getAdresseServeur();
+                                     String portTexte = panneau.getPortServeur();
+
+                                     // MAJ DES VALEURS (AVEC LES NOUVELLES VALEURS)
+                                     int newPort = Integer.parseInt(portTexte);
+                                     client.setAdrServeur(newAdr);
+                                     client.setPortServeur(newPort);
+
+                                     config = false;
+                                 } else {
+                                     config = false;
+                                 }
+                             } catch (NumberFormatException e) {
+                                 JOptionPane.showMessageDialog(fenetre, "Le numéro de port saisi n’est pas un entier");
+                             }
+                         }
+                     }
                     
                     break;
 
