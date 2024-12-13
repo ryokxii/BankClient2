@@ -2,11 +2,13 @@ package com.atoudeft.vue;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PanneauOperationsCompte extends JPanel {
     private JButton bEpargne, bDepot, bRetrait, bTransfert, bFacture, bHistorique;
     private JLabel lblSolde;
+    private JTextArea zoneHistorique;
 
     public PanneauOperationsCompte() {
         bEpargne = new JButton("Créer compte épargne");
@@ -41,8 +43,23 @@ public class PanneauOperationsCompte extends JPanel {
         bTransfert.addActionListener(ecouteur);
         bFacture.addActionListener(ecouteur);
         bHistorique.addActionListener(ecouteur);
+
+        bHistorique.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                afficherHistorique();
+            }
+        });
     }
     public void afficherSolde(String solde) {
         lblSolde.setText("Solde : " + solde + " $");
     }
+    private void afficherHistorique() {
+        String historique = "";
+        zoneHistorique = new JTextArea(historique);
+        zoneHistorique.setEditable(false);
+        JScrollPane panneau = new JScrollPane(zoneHistorique);
+        JOptionPane.showMessageDialog(this, panneau, "Historique du Compte", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 }
